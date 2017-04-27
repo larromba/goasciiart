@@ -15,6 +15,17 @@ import (
 
 var ASCIISTR = "MND8OZ$7I?+=~:,.."
 
+func LoadImage(path string) (image.Image, error) {
+    f, err := os.Open(path)
+    if err != nil {
+        return nil, err
+    }
+    defer f.Close()
+
+    img, _, err := image.Decode(f)
+    return img, err
+}
+
 func ScaleImage(img image.Image, w int) (image.Image, int, int) {
     sz := img.Bounds()
     h := (sz.Max.Y * w * 10) / (sz.Max.X * 16)

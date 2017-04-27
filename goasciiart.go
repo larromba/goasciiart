@@ -5,6 +5,7 @@ package goasciiart
 import (
     "github.com/nfnt/resize"
 
+    "os"
     "bytes"
     "image"
     "reflect"

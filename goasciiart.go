@@ -1,6 +1,6 @@
 // by mo2zie
 
-package main
+package goasciiart
 
 import (
     "github.com/nfnt/resize"

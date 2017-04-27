@@ -19,25 +19,6 @@ import (
 
 var ASCIISTR = "MND8OZ$7I?+=~:,.."
 
-func Init() (image.Image, int) {
-    width := flag.Int("w", 80, "Use -w <width>")
-    fpath := flag.String("p", "test.jpg", "Use -p <filesource>")
-    flag.Parse()
-
-    f, err := os.Open(*fpath)
-    if err != nil {
-        log.Fatal(err)
-    }
-
-    img, _, err := image.Decode(f)
-    if err != nil {
-        log.Fatal(err)
-    }
-
-    f.Close()
-    return img, *width
-}
-
 func ScaleImage(img image.Image, w int) (image.Image, int, int) {
     sz := img.Bounds()
     h := (sz.Max.Y * w * 10) / (sz.Max.X * 16)
@@ -59,9 +40,4 @@ func Convert2Ascii(img image.Image, w, h int) []byte {
         _ = buf.WriteByte('\n')
     }
     return buf.Bytes()
-}
-
-func main() {
-    p := Convert2Ascii(ScaleImage(Init()))
-    fmt.Print(string(p))
 }

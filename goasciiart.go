@@ -5,10 +5,6 @@ package main
 import (
     "github.com/nfnt/resize"
 
-    "os"
-    "log"
-    "fmt"
-    "flag"
     "bytes"
     "image"
     "reflect"
